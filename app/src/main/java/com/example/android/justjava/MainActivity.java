@@ -24,8 +24,19 @@ public class MainActivity extends AppCompatActivity {
      */
     public void submitOrder(View view) {
         //displayPrice(coffeeCount * coffeePrice);
-        String message = "That'll be $" + (coffeeCount * coffeePrice) + "\nThank you!";
+        String message = "That'll be $" + calculatePrice(coffeeCount, coffeePrice) + "\nThank you!";
         displayMessage(message);
+    }
+
+    /**
+     * Given the amount of coffees and the price per coffee
+     * it calculates the total value
+     *
+     * @param coffees     is the number of coffees
+     * @param pricePerCup is the price per cup of coffee
+     */
+    public int calculatePrice(int coffees, int pricePerCup) {
+        return coffees * pricePerCup;
     }
 
     /**
