@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -11,7 +12,7 @@ import java.text.NumberFormat;
 public class MainActivity extends AppCompatActivity {
 
     protected int cupsCount = 1;
-    protected int cupPrice = 80;
+    protected final int cupPrice = 80;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +50,16 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        displayMessage(createOderSummary());
+        // Getting the state of the whipped cream check box
+        CheckBox whippedCreamCheckBox = findViewById(R.id.whipped_cream_checkbox);
+        boolean hasWhippedCream = whippedCreamCheckBox.isChecked();
+
+        // Getting the state of the chocolate check box
+        CheckBox chocolateCheckBox = findViewById(R.id.chocolate_checkbox);
+        boolean hasChocolate = chocolateCheckBox.isChecked();
+
+        // Create and display the summary message
+        displayMessage(createOderSummary(hasWhippedCream, hasChocolate));
     }
 
     /**
@@ -65,11 +75,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
+     * @param hasWhippedCream tells if the user wants whipped cream or not
      * @return the order summary with the final price and a nice message
      */
-    public String createOderSummary() {
+    public String createOderSummary(boolean hasWhippedCream, boolean hasChocolate) {
         String summary = "Name: Maria Luz Cucarella";
         summary += "\nQuantity: " + cupsCount;
+        summary += "\nAdd whipped cream? " + hasWhippedCream;
+        summary += "\nAdd chocolate? " + hasChocolate;
         summary += "\nTotal: $" + calculatePrice(cupsCount, cupPrice);
         summary += "\nThank you!";
         return summary;
