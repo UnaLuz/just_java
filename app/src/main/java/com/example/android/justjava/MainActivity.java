@@ -1,13 +1,15 @@
 package com.example.android.justjava;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.NumberFormat;
 
@@ -62,18 +64,25 @@ public class MainActivity extends AppCompatActivity {
         EditText nameView = findViewById(R.id.name_edittext_view);
         String nameText = nameView.getText().toString().trim();
 
-        // Getting the state of the whipped cream check box
-        CheckBox whippedCreamCheckBox = findViewById(R.id.whipped_cream_checkbox);
-        boolean hasWhippedCream = whippedCreamCheckBox.isChecked();
+        if (nameText.isEmpty()) {
+            Toast.makeText(this, "Name cannot be blank", Toast.LENGTH_SHORT).show();
+        } else {
+            // Getting the state of the whipped cream check box
+            CheckBox whippedCreamCheckBox = findViewById(R.id.whipped_cream_checkbox);
+            boolean hasWhippedCream = whippedCreamCheckBox.isChecked();
 
-        // Getting the state of the chocolate check box
-        CheckBox chocolateCheckBox = findViewById(R.id.chocolate_checkbox);
-        boolean hasChocolate = chocolateCheckBox.isChecked();
+            // Getting the state of the chocolate check box
+            CheckBox chocolateCheckBox = findViewById(R.id.chocolate_checkbox);
+            boolean hasChocolate = chocolateCheckBox.isChecked();
 
-        int totalPrice = calculatePrice(hasWhippedCream, hasChocolate);
+            // Calculate the final price
+            int totalPrice = calculatePrice(hasWhippedCream, hasChocolate);
 
-        // Create and display the summary message
-        displayMessage(createOderSummary(nameText, hasWhippedCream, hasChocolate, totalPrice));
+            // Create the full order summary
+            String orderSummary = createOderSummary(nameText, hasWhippedCream, hasChocolate, totalPrice);
+
+            composeEmail(new String[]{"luz.cucarella97@gmail.com"}, orderSummary, "Coffee order for " + nameText);
+        }
     }
 
     /**
@@ -117,11 +126,15 @@ public class MainActivity extends AppCompatActivity {
         return summary;
     }
 
-    /**
-     * @param m is the summary message to display on the screen
-     */
-    public void displayMessage(String m) {
-        TextView priceTextView = findViewById(R.id.summary_text_view);
-        priceTextView.setText(m);
+    public void composeEmail(String[] addresses, String message, String subject) {
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+        intent.putExtra(Intent.EXTRA_EMAIL, addresses);
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        intent.putExtra(Intent.EXTRA_TEXT, message);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
     }
+
 }

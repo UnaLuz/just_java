@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="intro">Has tu orden de café</string>
+    <string name="toppings">Agregados</string>
+    <string name="whipped_cream">Crema batida</string>
+    <string name="chocolate">Chocolate</string>
+    <string name="quantity">Cantidad</string>
+    <string name="quantity_value">1</string>
+    <string name="order">Ordenar</string>
+    <string name="name">Nombre</string>
+</resources>
