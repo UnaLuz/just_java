@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.NumberFormat;
 
@@ -27,18 +28,22 @@ public class MainActivity extends AppCompatActivity {
     public void increment(View view) {
         if (cupsCount < 100) {
             cupsCount += 1;
+            display(cupsCount);
+        } else {
+            Toast.makeText(this, "You cannot have more than 100 coffees", Toast.LENGTH_SHORT).show();
         }
-        display(cupsCount);
     }
 
     /**
      * This method is called when the minus button is clicked.
      */
     public void decrement(View view) {
-        if (cupsCount > 0) {
+        if (cupsCount > 1) {
             cupsCount -= 1;
+            display(cupsCount);
+        } else {
+            Toast.makeText(this, "You cannot have less than 1 coffee", Toast.LENGTH_SHORT).show();
         }
-        display(cupsCount);
     }
 
     /**
