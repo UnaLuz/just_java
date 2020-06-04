@@ -11,4 +11,5 @@
     <string name="order_summary">Order summary</string>
     <string name="summary">$80</string>
     <string name="order">Order</string>
+    <string name="name">Name</string>
 </resources>

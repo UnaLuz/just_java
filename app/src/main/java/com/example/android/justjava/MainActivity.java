@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -24,7 +25,9 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the plus button is clicked.
      */
     public void increment(View view) {
-        cupsCount += 1;
+        if (cupsCount < 100) {
+            cupsCount += 1;
+        }
         display(cupsCount);
     }
 
@@ -50,6 +53,10 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
+        // Getting the name that the user entered
+        EditText nameView = findViewById(R.id.name_edittext_view);
+        String nameText = nameView.getText().toString().trim();
+
         // Getting the state of the whipped cream check box
         CheckBox whippedCreamCheckBox = findViewById(R.id.whipped_cream_checkbox);
         boolean hasWhippedCream = whippedCreamCheckBox.isChecked();
@@ -58,32 +65,49 @@ public class MainActivity extends AppCompatActivity {
         CheckBox chocolateCheckBox = findViewById(R.id.chocolate_checkbox);
         boolean hasChocolate = chocolateCheckBox.isChecked();
 
+        int totalPrice = calculatePrice(hasWhippedCream, hasChocolate);
+
         // Create and display the summary message
-        displayMessage(createOderSummary(hasWhippedCream, hasChocolate));
+        displayMessage(createOderSummary(nameText, hasWhippedCream, hasChocolate, totalPrice));
     }
 
     /**
-     * Given the amount of coffees and the price per coffee
-     * it calculates the total value
+     * Knowing the price of a cup of coffee, how many coffees the user wants,
+     * and getting what toppings the user wants to add it calculates the total price
      *
-     * @param coffees     is the number of coffees
-     * @param pricePerCup is the price per cup of coffee
+     * @param addWhippedCream is whether or not the user wants whipped cream
+     * @param addChocolate    is whether or not the user wants chocolate topping
      * @return the total price
      */
-    public int calculatePrice(int coffees, int pricePerCup) {
-        return coffees * pricePerCup;
+    public int calculatePrice(boolean addWhippedCream, boolean addChocolate) {
+        int totalPerCup = cupPrice;
+
+        // Whipped cream costs 20 percent of the price of a cup of coffee
+        if (addWhippedCream) {
+            totalPerCup += cupPrice * 0.2;
+        }
+
+        // Chocolate costs 40 percent of the price of a cup of coffee
+        if (addChocolate) {
+            totalPerCup += cupPrice * 0.4;
+        }
+
+        return cupsCount * totalPerCup;
     }
 
     /**
+     * @param nameText        is the text entered by the user, luckily their name
      * @param hasWhippedCream tells if the user wants whipped cream or not
+     * @param hasChocolate    tells if the user wants chocolate topping
+     * @param totalPrice      total price of the order, including the toppings
      * @return the order summary with the final price and a nice message
      */
-    public String createOderSummary(boolean hasWhippedCream, boolean hasChocolate) {
-        String summary = "Name: Maria Luz Cucarella";
+    public String createOderSummary(String nameText, boolean hasWhippedCream, boolean hasChocolate, int totalPrice) {
+        String summary = "Name: " + nameText;
         summary += "\nQuantity: " + cupsCount;
         summary += "\nAdd whipped cream? " + hasWhippedCream;
         summary += "\nAdd chocolate? " + hasChocolate;
-        summary += "\nTotal: $" + calculatePrice(cupsCount, cupPrice);
+        summary += "\nTotal: $" + totalPrice;
         summary += "\nThank you!";
         return summary;
     }
