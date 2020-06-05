@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="intro">Has tu orden de café</string>
     <string name="toppings">Agregados</string>
     <string name="whipped_cream">Crema batida</string>
@@ -8,4 +8,13 @@
     <string name="quantity_value">1</string>
     <string name="order">Ordenar</string>
     <string name="name">Nombre</string>
+
+    <string name="name_summary">Nombre: <xliff:g example="Amy" id="name">%s</xliff:g></string>
+    <string name="quantity_summary">Cantidad: <xliff:g example="2" id="quantity">%d</xliff:g></string>
+    <string name="whipped_cream_summary">¿Agregar crema batida? <xliff:g example="true" id="addWhippedCream">%b</xliff:g></string>
+    <string name="chocolate_summary">¿Agregar chocolate? <xliff:g example="true" id="addChocolate">%b</xliff:g></string>
+    <string name="total_price_summary">Total: $<xliff:g example="80" id="totalPrice">%d</xliff:g></string>
+    <string name="thank_you_summary">¡Gracias!</string>
+
+    <string name="name_subject">Orden de café para <xliff:g example="Amy" id="name">%s</xliff:g></string>
 </resources>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name" translatable="false">Just Java</string>
     <string name="intro">Make your coffee order</string>
     <string name="toppings">Toppings</string>
@@ -11,4 +11,14 @@
     <string name="minus" translatable="false">-</string>
     <string name="order">Order</string>
     <string name="name">Name</string>
+
+    <!-- Strings for the summary message -->
+    <string name="name_summary">Name: <xliff:g example="Amy" id="name">%s</xliff:g></string>
+    <string name="quantity_summary">Quantity: <xliff:g example="2" id="quantity">%d</xliff:g></string>
+    <string name="whipped_cream_summary">Add whipped cream? <xliff:g example="true" id="addWhippedCream">%b</xliff:g></string>
+    <string name="chocolate_summary">Add chocolate? <xliff:g example="true" id="addChocolate">%b</xliff:g></string>
+    <string name="total_price_summary">Total: $<xliff:g example="80" id="totalPrice">%d</xliff:g></string>
+    <string name="thank_you_summary">Thank you!</string>
+
+    <string name="name_subject">Coffee order for <xliff:g example="Amy" id="name">%s</xliff:g></string>
 </resources>

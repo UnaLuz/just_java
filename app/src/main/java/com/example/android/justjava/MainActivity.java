@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
             // Create the full order summary
             String orderSummary = createOderSummary(nameText, hasWhippedCream, hasChocolate, totalPrice);
 
-            composeEmail(new String[]{"luz.cucarella97@gmail.com"}, orderSummary, "Coffee order for " + nameText);
+            composeEmail(new String[]{"cucarella_luz@justjava.com"}, orderSummary, getString(R.string.name_subject, nameText));
         }
     }
 
@@ -117,12 +117,12 @@ public class MainActivity extends AppCompatActivity {
      * @return the order summary with the final price and a nice message
      */
     public String createOderSummary(String nameText, boolean hasWhippedCream, boolean hasChocolate, int totalPrice) {
-        String summary = "Name: " + nameText;
-        summary += "\nQuantity: " + cupsCount;
-        summary += "\nAdd whipped cream? " + hasWhippedCream;
-        summary += "\nAdd chocolate? " + hasChocolate;
-        summary += "\nTotal: $" + totalPrice;
-        summary += "\nThank you!";
+        String summary = getString(R.string.name_summary, nameText);
+        summary += "\n" + getString(R.string.quantity_summary, cupsCount);
+        summary += "\n" + getString(R.string.whipped_cream_summary, hasWhippedCream);
+        summary += "\n" + getString(R.string.chocolate_summary, hasChocolate);
+        summary += "\n" + getString(R.string.total_price_summary, totalPrice);
+        summary += "\n" + getString(R.string.thank_you_summary);
         return summary;
     }
 
