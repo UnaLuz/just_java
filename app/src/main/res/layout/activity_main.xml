@@ -24,7 +24,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints="PERSON_NAME"
-            android:fontFamily="sans-serif-light"
             android:hint="@string/name"
             android:inputType="textCapWords" />
 
@@ -36,7 +35,6 @@
             android:id="@+id/whipped_cream_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-light"
             android:paddingStart="24dp"
             android:paddingLeft="24dp"
             android:paddingEnd="24dp"
@@ -48,7 +46,6 @@
             android:id="@+id/chocolate_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-light"
             android:paddingStart="24dp"
             android:paddingLeft="24dp"
             android:paddingEnd="24dp"

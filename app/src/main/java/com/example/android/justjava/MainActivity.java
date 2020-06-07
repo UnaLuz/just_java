@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
             cupsCount += 1;
             display(cupsCount);
         } else {
-            Toast.makeText(this, "You cannot have more than 100 coffees", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.increment_toast, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             cupsCount -= 1;
             display(cupsCount);
         } else {
-            Toast.makeText(this, "You cannot have less than 1 coffee", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.decrement_toast, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         String nameText = nameView.getText().toString().trim();
 
         if (nameText.isEmpty()) {
-            Toast.makeText(this, "Name cannot be blank", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.blank_name_toast, Toast.LENGTH_SHORT).show();
         } else {
             // Getting the state of the whipped cream check box
             CheckBox whippedCreamCheckBox = findViewById(R.id.whipped_cream_checkbox);

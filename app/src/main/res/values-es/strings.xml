@@ -17,4 +17,7 @@
     <string name="thank_you_summary">¡Gracias!</string>
 
     <string name="name_subject">Orden de café para <xliff:g example="Amy" id="name">%s</xliff:g></string>
+    <string name="increment_toast">No puedes ordenar mas de 100 cafes</string>
+    <string name="decrement_toast">No puedes pedir menos de 1 café</string>
+    <string name="blank_name_toast">Complete su nombre</string>
 </resources>

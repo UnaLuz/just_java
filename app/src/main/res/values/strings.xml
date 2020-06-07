@@ -20,5 +20,9 @@
     <string name="total_price_summary">Total: $<xliff:g example="80" id="totalPrice">%d</xliff:g></string>
     <string name="thank_you_summary">Thank you!</string>
 
+    <string name="increment_toast">You cannot order more than 100 coffees</string>
+    <string name="decrement_toast">You cannot have less than 1 coffee</string>
+    <string name="blank_name_toast">Fill the name section</string>
+
     <string name="name_subject">Coffee order for <xliff:g example="Amy" id="name">%s</xliff:g></string>
 </resources>
